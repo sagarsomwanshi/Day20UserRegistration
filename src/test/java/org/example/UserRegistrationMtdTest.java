@@ -3,20 +3,18 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 class UserRegistrationMtdTest {
     @Test
     void checkFirstName(){
-        UserRegistrationMtd firstName = new UserRegistrationMtd();
-        assertEquals("Sagar", firstName.Name("Sagar"));
+        UserRegistrationMtd firstName = new UserRegistrationMtd("Sagar");
+        assertEquals("Sagar", firstName.Name());
     }
     @Test
     void checkLastName(){
-        UserRegistrationMtd lastName = new UserRegistrationMtd();
-        assertEquals("Somwanshi", lastName.Name("Somwanshi"));
+        UserRegistrationMtd lastName = new UserRegistrationMtd("Somwanshi");
+        assertEquals("Somwanshi", lastName.Name());
     }
     @Test
     void checkEmail(){
@@ -33,6 +31,6 @@ class UserRegistrationMtdTest {
         UserRegistrationMtd password = new UserRegistrationMtd();
         assertEquals("Sagar@1234", password.password("Sagar@1234"));
     }
-
+    String x =  "sagarraje34@gmail.com";
 
 }

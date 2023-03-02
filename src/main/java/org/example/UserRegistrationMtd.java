@@ -4,13 +4,23 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class UserRegistrationMtd {
-    public String Name(String nameInput){
+
+    String nameInput;
+
+    public UserRegistrationMtd(String nameInput) {
+        this.nameInput = nameInput;
+    }
+
+    public UserRegistrationMtd() {
+    }
+
+    public String Name(){
 
         if(Pattern.matches("^[A-Z][a-z]{2,}$",nameInput)){
             return nameInput;
         }else{
             System.out.println("Please Enter Valid Name");
-            Name(nameInput);
+            Name();
             return null;
         }
     }
