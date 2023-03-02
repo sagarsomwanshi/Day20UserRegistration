@@ -1,23 +1,20 @@
 package org.example;
 
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 public class UserRegistrationMtd {
 
-    String nameInput;
-
-    public UserRegistrationMtd(String nameInput) {
-        this.nameInput = nameInput;
-    }
 
     public UserRegistrationMtd() {
     }
 
-    public String Name(){
+
+    Lamda firstName = firstnameInput ->{
         try {
-            if (Pattern.matches("^[A-Z][a-z]{2,}$", nameInput)) {
-                return nameInput;
+            if (Pattern.matches("^[A-Z][a-z]{2,}$", firstnameInput)) {
+                return firstnameInput;
             }
             else{
                 throw new UserRegistrationException(UserRegistrationException.ExceptionType.FIRST_NAME,"Please Enter Valid Name");
@@ -26,8 +23,8 @@ public class UserRegistrationMtd {
                 throw new UserRegistrationException(UserRegistrationException.ExceptionType.FIRST_NAME,"Please Enter Valid Name");
             }
 
-    }
-    public String lastName(String lastnameInput){
+    };
+   Lamda lastName = lastnameInput ->{
         try {
             if (Pattern.matches("^[A-Z][a-z]{2,}$", lastnameInput)) {
                 return lastnameInput;
@@ -37,32 +34,34 @@ public class UserRegistrationMtd {
         }catch(UserRegistrationException e){
             throw new UserRegistrationException(UserRegistrationException.ExceptionType.FIRST_NAME,"Please Enter Valid Last Name");
         }
-    }
-    public String email(String emailInput){
-        try{if(Pattern.matches("^([\\w]+[_+.-]?[\\w]+)@([a-zA-Z0-9]+).([a-zA-Z]+[.]?[a-zA-Z]{2,})$",emailInput)) {
+    };
+    Lamda email =  emailInput->{
+        try{
+            if(Pattern.matches("^([\\w]+[_+.-]?[\\w]+)@([a-zA-Z0-9]+).([a-zA-Z]+[.]?[a-zA-Z]{2,})$",emailInput)) {
             return emailInput;
-        }
+        } else{
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMAIL,"Please Enter Valid Email ID");
+            }
         }catch (UserRegistrationException e){
             throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMAIL,"Please Enter Valid Email ID");
         }
-            return null;
-    }
-    public String phone(String phone){
+    };
+    Lamda phone = phoneInput->{
 
         try {
-            if(Pattern.matches("^\\+[0-9]{2}[0-9]{10}$",phone)){
-                return phone;
+            if(Pattern.matches("^\\+[0-9]{2}[0-9]{10}$",phoneInput)){
+                return phoneInput;
             }else{
                 throw new UserRegistrationException(UserRegistrationException.ExceptionType.PHONE_NUMBER,"Please Enter Phone Number");
             }
         }catch (UserRegistrationException e){
             throw new UserRegistrationException(UserRegistrationException.ExceptionType.PHONE_NUMBER,"Please Enter Phone Number");
         }
-    }
-    public String password(String password){
+    };
+    Lamda password = passwordInput->{
         try {
-            if(Pattern.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*+=_-])(?=\\S+$).{8,}$",password)){
-                return password;
+            if(Pattern.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*+=_-])(?=\\S+$).{8,}$",passwordInput)){
+                return passwordInput;
             }
             else{
                 throw new UserRegistrationException(UserRegistrationException.ExceptionType.PASSWORD,"Please Enter Valid Password");
@@ -70,5 +69,6 @@ public class UserRegistrationMtd {
         }catch (UserRegistrationException e){
             throw new UserRegistrationException(UserRegistrationException.ExceptionType.PASSWORD,"Please Enter Valid Password");
         }
-    }
+    };
+
 }
