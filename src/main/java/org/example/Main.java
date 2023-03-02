@@ -16,7 +16,6 @@ public class Main {
         UserRegistrationMtd obj1 = new UserRegistrationMtd(firstName);
         System.out.println("\nEnter last Name (1st character should be Capital & Should have at least 3 characters)");
         String lastName = sc.nextLine();
-        UserRegistrationMtd obj2 = new UserRegistrationMtd(lastName);
         System.out.println("\nEnter Email Id : ");
         String email  = sc.nextLine();
         System.out.println("\nEnter Phone Number (Starts with +country code)");
@@ -25,9 +24,10 @@ public class Main {
         String password  = sc.nextLine();
 
         System.out.println("User Info : "+
-                "\nName : "+obj1.Name() +" " +obj2.Name()+
+                "\nName : "+obj1.Name() +" " +obj.lastName(lastName)+
                 "\nEmail : "+obj.email(email)+
                 "\nPhone : "+obj.phone(phone)+
                 "\nPassword : "+obj.password(password));
+//        System.out.println("Name"+obj1.Name());
     }
 }
